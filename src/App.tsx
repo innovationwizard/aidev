@@ -1,4 +1,3 @@
-import React from 'react';
 import ProjectCard from './components/ProjectCard';
 
 // Project data - easy to add more projects
