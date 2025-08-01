@@ -24,9 +24,11 @@ function App() {
       <header className="header">
         <div className="container">
           <div className="header-content">
-            <img src="/ai_dev_logo.jpg" alt="AI Dev Logo" className="logo" />
-            <h1 className="title">
-              <div>Artificial Intelligence</div>
+            <div className="logo-wrapper">
+              <img src="/ai_dev_logo.png" alt="AI Dev Logo" className="logo" />
+            </div>
+            <h1 className="title text-fiery">
+              <div>Artificial&nbsp; Intelligence</div>
               <div>DEVELOPMENTS</div>
             </h1>
           </div>
@@ -48,7 +50,7 @@ function App() {
       <footer className="footer">
         <div className="container">
           <div className="footer-content">
-            <p>&copy; 2024 Artificial Intelligence Developments. All rights reserved.</p>
+            <p>&copy; 2025 Jorge Luis Contreras Herrera. All rights reserved.</p>
           </div>
         </div>
       </footer>
