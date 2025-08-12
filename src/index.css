@@ -58,7 +58,7 @@ body {
 }
 
 .logo:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .title {
@@ -118,7 +118,8 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: #ffffff;
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
   display: flex;
   align-items: center;
   justify-content: center;
