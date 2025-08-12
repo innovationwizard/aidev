@@ -51,7 +51,9 @@ function App() {
       <footer className="footer">
         <div className="container">
           <div className="footer-content">
-            <p>&copy; 2025 Jorge Luis Contreras Herrera. All rights reserved.</p>
+            <p><span font-semibold tracking-wide>
+              &copy; 2025 <span className="text-white" style={{ textShadow: '0 0 6px white' }}>Jorge Luis Contreras Herrera</span>. All rights reserved.</span>
+            </p>
           </div>
         </div>
       </footer>
