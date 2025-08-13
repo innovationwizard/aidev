@@ -29,9 +29,6 @@ const initialProjects = [
 function App() {
   const [projects] = useState(initialProjects);
 
-  // Debug: Log the projects data
-  console.log('Projects data:', projects);
-
   return (
     <div className="app">
       {/* Header */}
