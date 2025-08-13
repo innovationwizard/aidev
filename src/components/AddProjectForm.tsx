@@ -23,10 +23,17 @@ const AddProjectForm: React.FC<AddProjectFormProps> = ({ onAddProject, onClose }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form data:', formData); // Debug log
     if (formData.name && formData.url && formData.description) {
       onAddProject(formData);
       setFormData({ name: '', logo: '', url: '', description: '' });
       onClose();
+    } else {
+      console.log('Validation failed:', {
+        name: !!formData.name,
+        url: !!formData.url,
+        description: !!formData.description
+      });
     }
   };
 

@@ -112,7 +112,7 @@ const EditProjectForm: React.FC<EditProjectFormProps> = ({ project, onUpdateProj
             />
           </div>
           
-          <div className="form-edit-actions">
+          <div className="form-actions">
             <button type="button" onClick={onClose} className="btn-secondary">
               Cancel
             </button>
