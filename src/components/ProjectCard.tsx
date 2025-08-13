@@ -8,17 +8,48 @@ interface Project {
 
 interface ProjectCardProps {
   project: Project;
+  onEdit: (project: Project) => void;
+  onDelete: (projectId: number) => void;
+  showActions?: boolean;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onEdit, onDelete, showActions = false }) => {
+  const handleDelete = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (window.confirm(`Are you sure you want to delete "${project.name}"?`)) {
+      onDelete(project.id);
+    }
+  };
+
   return (
     <div className="project-card">
       <div className="project-content">
-        <div className="project-logo">
-          {project.logo.startsWith('/') ? (
-            <img src={project.logo} alt={`${project.name} Logo`} />
-          ) : (
-            project.logo
+        <div className="project-header">
+          <div className="project-logo">
+            {project.logo.startsWith('/') ? (
+              <img src={project.logo} alt={`${project.name} Logo`} />
+            ) : (
+              project.logo
+            )}
+          </div>
+          {showActions && (
+            <div className="project-actions">
+              <button 
+                onClick={() => onEdit(project)}
+                className="action-btn edit-btn"
+                title="Edit project"
+              >
+                ✏️
+              </button>
+              <button 
+                onClick={handleDelete}
+                className="action-btn delete-btn"
+                title="Delete project"
+              >
+                🗑️
+              </button>
+            </div>
           )}
         </div>
         <div className="project-description">

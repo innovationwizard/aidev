@@ -1,7 +1,12 @@
+import { useState, useEffect } from 'react';
 import ProjectCard from './components/ProjectCard';
+import AddProjectForm from './components/AddProjectForm';
+import EditProjectForm from './components/EditProjectForm';
+import ProjectReorder from './components/ProjectReorder';
+import AdminLogin from './components/AdminLogin';
 
 // Project data - easy to add more projects
-const projects = [
+const initialProjects = [
   {
     id: 1,
     name: "IngePro",
@@ -19,6 +24,99 @@ const projects = [
 ];
 
 function App() {
+  const [projects, setProjects] = useState(initialProjects);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [showReorderForm, setShowReorderForm] = useState(false);
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [editingProject, setEditingProject] = useState<typeof projects[0] | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Check for existing admin session on component mount
+  useEffect(() => {
+    const checkAdminSession = () => {
+      const isAuthenticated = localStorage.getItem('adminAuthenticated') === 'true';
+      const loginTime = localStorage.getItem('adminLoginTime');
+      
+      if (isAuthenticated && loginTime) {
+        // Check if session is still valid (24 hours)
+        const sessionAge = Date.now() - parseInt(loginTime);
+        const sessionValid = sessionAge < 24 * 60 * 60 * 1000; // 24 hours
+        
+        if (sessionValid) {
+          setIsAdmin(true);
+        } else {
+          // Session expired, clear it
+          localStorage.removeItem('adminAuthenticated');
+          localStorage.removeItem('adminLoginTime');
+        }
+      }
+    };
+
+    checkAdminSession();
+  }, []);
+
+  const handleAdminLogin = () => {
+    setIsAdmin(true);
+    setShowAdminLogin(false);
+  };
+
+  const handleAdminLogout = () => {
+    setIsAdmin(false);
+    localStorage.removeItem('adminAuthenticated');
+    localStorage.removeItem('adminLoginTime');
+  };
+
+  const handleAddProject = (newProject: Omit<typeof projects[0], 'id'>) => {
+    const projectWithId = {
+      ...newProject,
+      id: Math.max(...projects.map(p => p.id)) + 1
+    };
+    setProjects(prev => [...prev, projectWithId]);
+  };
+
+  const handleEditProject = (project: typeof projects[0]) => {
+    if (!isAdmin) {
+      setShowAdminLogin(true);
+      return;
+    }
+    setEditingProject(project);
+    setShowEditForm(true);
+  };
+
+  const handleUpdateProject = (updatedProject: typeof projects[0]) => {
+    setProjects(prev => prev.map(p => p.id === updatedProject.id ? updatedProject : p));
+    setEditingProject(null);
+  };
+
+  const handleDeleteProject = (projectId: number) => {
+    if (!isAdmin) {
+      setShowAdminLogin(true);
+      return;
+    }
+    setProjects(prev => prev.filter(p => p.id !== projectId));
+  };
+
+  const handleReorderProjects = (reorderedProjects: typeof projects) => {
+    setProjects(reorderedProjects);
+  };
+
+  const handleShowAddForm = () => {
+    if (!isAdmin) {
+      setShowAdminLogin(true);
+      return;
+    }
+    setShowAddForm(true);
+  };
+
+  const handleShowReorderForm = () => {
+    if (!isAdmin) {
+      setShowAdminLogin(true);
+      return;
+    }
+    setShowReorderForm(true);
+  };
+
   return (
     <div className="app">
       {/* Header */}
@@ -39,13 +137,92 @@ function App() {
       {/* Main Content */}
       <main className="main">
         <div className="container">
+          <div className="projects-header">
+            <h2>Projects</h2>
+            <div className="project-actions">
+              {isAdmin && (
+                <>
+                  <button 
+                    onClick={handleShowReorderForm}
+                    className="reorder-btn"
+                    disabled={projects.length < 2}
+                  >
+                    ↕️ Reorder
+                  </button>
+                  <button 
+                    onClick={handleShowAddForm}
+                    className="add-project-btn"
+                  >
+                    + Add Project
+                  </button>
+                  <button 
+                    onClick={handleAdminLogout}
+                    className="logout-btn"
+                  >
+                    Logout
+                  </button>
+                </>
+              )}
+              {!isAdmin && (
+                <button 
+                  onClick={() => setShowAdminLogin(true)}
+                  className="admin-btn"
+                >
+                  🔐 Admin
+                </button>
+              )}
+            </div>
+          </div>
           <div className="projects-grid">
             {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <ProjectCard 
+                key={project.id} 
+                project={project}
+                onEdit={handleEditProject}
+                onDelete={handleDeleteProject}
+                showActions={isAdmin}
+              />
             ))}
           </div>
         </div>
       </main>
+
+      {/* Add Project Modal */}
+      {showAddForm && (
+        <AddProjectForm
+          onAddProject={handleAddProject}
+          onClose={() => setShowAddForm(false)}
+        />
+      )}
+
+      {/* Edit Project Modal */}
+      {showEditForm && editingProject && (
+        <EditProjectForm
+          project={editingProject}
+          onUpdateProject={handleUpdateProject}
+          onClose={() => {
+            setShowEditForm(false);
+            setEditingProject(null);
+          }}
+        />
+      )}
+
+      {/* Reorder Projects Modal */}
+      {showReorderForm && (
+        <ProjectReorder
+          projects={projects}
+          onReorder={handleReorderProjects}
+          onClose={() => setShowReorderForm(false)}
+        />
+      )}
+
+      {/* Admin Login Modal */}
+      {showAdminLogin && (
+        <AdminLogin
+          onLogin={handleAdminLogin}
+          onClose={() => setShowAdminLogin(false)}
+        />
+      )}
 
       {/* Footer */}
       <footer className="footer">
