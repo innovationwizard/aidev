@@ -230,7 +230,7 @@ function App() {
         <div className="container">
           <div className="footer-content">
             <p><span font-semibold tracking-wide>
-              &copy; 2025 <span className="text-white" style={{ textShadow: '0 0 6px white' }}>Jorge Luis Contreras Herrera</span>. All rights reserved.</span>
+              &copy; 2025 <span className="text-white" style={{ textShadow: '0 0 1px white' }}>Jorge Luis Contreras Herrera</span>. All rights reserved.</span>
             </p>
           </div>
         </div>
