@@ -201,3 +201,57 @@ body {
     gap: 3rem;
   }
 }
+
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .text-fiery {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .logo-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .header {
+    padding: 1.5rem 0;
+  }
+  
+  .main {
+    padding: 1.5rem 0;
+  }
+  
+  .projects-grid {
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 1.5rem;
+  }
+  
+  .container {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .text-fiery {
+    font-size: 2rem;
+    letter-spacing: -0.25px;
+  }
+  
+  .logo-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .title {
+    font-size: 1rem;
+  }
+}
