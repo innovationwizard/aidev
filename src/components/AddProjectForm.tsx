@@ -23,17 +23,10 @@ const AddProjectForm: React.FC<AddProjectFormProps> = ({ onAddProject, onClose }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form data:', formData); // Debug log
     if (formData.name && formData.url && formData.description) {
       onAddProject(formData);
       setFormData({ name: '', logo: '', url: '', description: '' });
       onClose();
-    } else {
-      console.log('Validation failed:', {
-        name: !!formData.name,
-        url: !!formData.url,
-        description: !!formData.description
-      });
     }
   };
 
@@ -77,7 +70,7 @@ const AddProjectForm: React.FC<AddProjectFormProps> = ({ onAddProject, onClose }
               placeholder="e.g., /project_logo.png"
             />
             <div className="form-hint">
-              Enter the path to your logo file in the public directory (e.g., /project_logo.png)
+              {/* Enter the path to your logo file in the public directory (e.g., /project_logo.png) */}
             </div>
           </div>
           

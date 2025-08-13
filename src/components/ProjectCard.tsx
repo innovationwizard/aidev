@@ -22,12 +22,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onEdit, onDelete, sh
     }
   };
 
+  // Debug: Log the logo value
+  console.log(`Project "${project.name}" logo:`, project.logo);
+
   return (
     <div className="project-card">
       <div className="project-content">
         <div className="project-header">
           <div className="project-logo">
-            {project.logo.startsWith('/') || project.logo.startsWith('data:') ? (
+            {project.logo && (project.logo.startsWith('/') || project.logo.startsWith('data:')) ? (
               <img src={project.logo} alt={`${project.name} Logo`} />
             ) : (
               <span>📁</span>
