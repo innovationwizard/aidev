@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ProjectCard from './components/ProjectCard';
-import AddProjectForm from './components/AddProjectForm';
-import EditProjectForm from './components/EditProjectForm';
-import ProjectReorder from './components/ProjectReorder';
-import AdminLogin from './components/AdminLogin';
 
-// Project data - easy to add more projects
+// Project data - all projects stored here for production
 const initialProjects = [
   {
     id: 1,
@@ -20,122 +16,18 @@ const initialProjects = [
     logo: "/solveur_logo.png",
     url: "https://solveur.pro",
     description: "Solveur is an AI-powered business problem-solving agent that companies can deploy within 24 hours to automatically handle up to 75% of their customer interactions. It uses advanced Augmented Recovery-Generation (RAG) technology with a Pinecone vector database and Next.js architecture to create intelligent agents that learn from enterprise knowledge bases and respond like expert employees. Customers can save thousands of dollars per month in support costs while improving response times from hours to seconds. State-of-the-art features include multi-agent orchestration, predictive customer support that prevents issues before they occur, and autonomous workflow automation that goes beyond answering questions to truly resolve end-to-end business processes."
+  },
+  {
+    id: 3,
+    name: "Carl",
+    logo: "/carl-logo.PNG",
+    url: "https://carl-lyart.vercel.app/",
+    description: "Carl is a modern web application showcasing innovative design and development practices. Built with cutting-edge technologies, it demonstrates expertise in creating responsive, user-friendly interfaces that deliver exceptional user experiences."
   }
 ];
 
 function App() {
-  const [projects, setProjects] = useState(initialProjects);
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [showEditForm, setShowEditForm] = useState(false);
-  const [showReorderForm, setShowReorderForm] = useState(false);
-  const [showAdminLogin, setShowAdminLogin] = useState(false);
-  const [editingProject, setEditingProject] = useState<typeof projects[0] | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  // Load projects from localStorage on component mount
-  useEffect(() => {
-    const savedProjects = localStorage.getItem('portfolioProjects');
-    if (savedProjects) {
-      try {
-        const parsedProjects = JSON.parse(savedProjects);
-        setProjects(parsedProjects);
-      } catch (error) {
-        console.error('Error loading projects from localStorage:', error);
-        // Fallback to initial projects if there's an error
-        setProjects(initialProjects);
-      }
-    }
-  }, []);
-
-  // Save projects to localStorage whenever projects change
-  useEffect(() => {
-    localStorage.setItem('portfolioProjects', JSON.stringify(projects));
-  }, [projects]);
-
-  // Check for existing admin session on component mount
-  useEffect(() => {
-    const checkAdminSession = () => {
-      const isAuthenticated = localStorage.getItem('adminAuthenticated') === 'true';
-      const loginTime = localStorage.getItem('adminLoginTime');
-      
-      if (isAuthenticated && loginTime) {
-        // Check if session is still valid (24 hours)
-        const sessionAge = Date.now() - parseInt(loginTime);
-        const sessionValid = sessionAge < 24 * 60 * 60 * 1000; // 24 hours
-        
-        if (sessionValid) {
-          setIsAdmin(true);
-        } else {
-          // Session expired, clear it
-          localStorage.removeItem('adminAuthenticated');
-          localStorage.removeItem('adminLoginTime');
-        }
-      }
-    };
-
-    checkAdminSession();
-  }, []);
-
-  const handleAdminLogin = () => {
-    setIsAdmin(true);
-    setShowAdminLogin(false);
-  };
-
-  const handleAdminLogout = () => {
-    setIsAdmin(false);
-    localStorage.removeItem('adminAuthenticated');
-    localStorage.removeItem('adminLoginTime');
-  };
-
-  const handleAddProject = (newProject: Omit<typeof projects[0], 'id'>) => {
-    const projectWithId = {
-      ...newProject,
-      id: Math.max(...projects.map(p => p.id)) + 1
-    };
-    setProjects(prev => [...prev, projectWithId]);
-  };
-
-  const handleEditProject = (project: typeof projects[0]) => {
-    if (!isAdmin) {
-      setShowAdminLogin(true);
-      return;
-    }
-    setEditingProject(project);
-    setShowEditForm(true);
-  };
-
-  const handleUpdateProject = (updatedProject: typeof projects[0]) => {
-    setProjects(prev => prev.map(p => p.id === updatedProject.id ? updatedProject : p));
-    setEditingProject(null);
-  };
-
-  const handleDeleteProject = (projectId: number) => {
-    if (!isAdmin) {
-      setShowAdminLogin(true);
-      return;
-    }
-    setProjects(prev => prev.filter(p => p.id !== projectId));
-  };
-
-  const handleReorderProjects = (reorderedProjects: typeof projects) => {
-    setProjects(reorderedProjects);
-  };
-
-  const handleShowAddForm = () => {
-    if (!isAdmin) {
-      setShowAdminLogin(true);
-      return;
-    }
-    setShowAddForm(true);
-  };
-
-  const handleShowReorderForm = () => {
-    if (!isAdmin) {
-      setShowAdminLogin(true);
-      return;
-    }
-    setShowReorderForm(true);
-  };
+  const [projects] = useState(initialProjects);
 
   return (
     <div className="app">
@@ -157,93 +49,16 @@ function App() {
       {/* Main Content */}
       <main className="main">
         <div className="container">
-          <div className="projects-header">
-            <div className="project-actions">
-              {isAdmin && (
-                <>
-                  <button 
-                    onClick={handleShowReorderForm}
-                    className="reorder-btn"
-                    disabled={projects.length < 2}
-                  >
-                    ↕️ Reorder
-                  </button>
-                  <button 
-                    onClick={handleShowAddForm}
-                    className="add-project-btn"
-                  >
-                    + Add Project
-                  </button>
-                  <button 
-                    onClick={handleAdminLogout}
-                    className="logout-btn"
-                  >
-                    Logout
-                  </button>
-                </>
-              )}
-            </div>
-          </div>
           <div className="projects-grid">
             {projects.map((project) => (
               <ProjectCard 
                 key={project.id} 
                 project={project}
-                onEdit={handleEditProject}
-                onDelete={handleDeleteProject}
-                showActions={isAdmin}
               />
             ))}
           </div>
-          {!isAdmin && (
-            <div className="admin-section">
-              <button 
-                onClick={() => setShowAdminLogin(true)}
-                className="admin-btn"
-              >
-                🔐
-              </button>
-            </div>
-          )}
         </div>
       </main>
-
-      {/* Add Project Modal */}
-      {showAddForm && (
-        <AddProjectForm
-          onAddProject={handleAddProject}
-          onClose={() => setShowAddForm(false)}
-        />
-      )}
-
-      {/* Edit Project Modal */}
-      {showEditForm && editingProject && (
-        <EditProjectForm
-          project={editingProject}
-          onUpdateProject={handleUpdateProject}
-          onClose={() => {
-            setShowEditForm(false);
-            setEditingProject(null);
-          }}
-        />
-      )}
-
-      {/* Reorder Projects Modal */}
-      {showReorderForm && (
-        <ProjectReorder
-          projects={projects}
-          onReorder={handleReorderProjects}
-          onClose={() => setShowReorderForm(false)}
-        />
-      )}
-
-      {/* Admin Login Modal */}
-      {showAdminLogin && (
-        <AdminLogin
-          onLogin={handleAdminLogin}
-          onClose={() => setShowAdminLogin(false)}
-        />
-      )}
 
       {/* Footer */}
       <footer className="footer">

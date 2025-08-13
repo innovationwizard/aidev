@@ -8,23 +8,9 @@ interface Project {
 
 interface ProjectCardProps {
   project: Project;
-  onEdit: (project: Project) => void;
-  onDelete: (projectId: number) => void;
-  showActions?: boolean;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onEdit, onDelete, showActions = false }) => {
-  const handleDelete = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (window.confirm(`Are you sure you want to delete "${project.name}"?`)) {
-      onDelete(project.id);
-    }
-  };
-
-  // Debug: Log the logo value
-  console.log(`Project "${project.name}" logo:`, project.logo);
-
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="project-card">
       <div className="project-content">
@@ -39,24 +25,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onEdit, onDelete, sh
               <span>📁</span>
             )}
           </div>
-          {showActions && (
-            <div className="project-actions">
-              <button 
-                onClick={() => onEdit(project)}
-                className="action-btn edit-btn"
-                title="Edit project"
-              >
-                ✏️
-              </button>
-              <button 
-                onClick={handleDelete}
-                className="action-btn delete-btn"
-                title="Delete project"
-              >
-                🗑️
-              </button>
-            </div>
-          )}
         </div>
         <div className="project-description">
           <h3 style={{ color: '#ffffff', marginBottom: '0.5rem', fontSize: '1.2rem' }}>
