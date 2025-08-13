@@ -138,7 +138,6 @@ function App() {
       <main className="main">
         <div className="container">
           <div className="projects-header">
-            <h2>Projects</h2>
             <div className="project-actions">
               {isAdmin && (
                 <>
@@ -163,14 +162,6 @@ function App() {
                   </button>
                 </>
               )}
-              {!isAdmin && (
-                <button 
-                  onClick={() => setShowAdminLogin(true)}
-                  className="admin-btn"
-                >
-                  🔐 Admin
-                </button>
-              )}
             </div>
           </div>
           <div className="projects-grid">
@@ -184,6 +175,16 @@ function App() {
               />
             ))}
           </div>
+          {!isAdmin && (
+            <div className="admin-section">
+              <button 
+                onClick={() => setShowAdminLogin(true)}
+                className="admin-btn"
+              >
+                🔐
+              </button>
+            </div>
+          )}
         </div>
       </main>
 

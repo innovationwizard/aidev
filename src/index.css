@@ -118,7 +118,7 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: #87CEFA;
   /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
   display: flex;
   align-items: center;
@@ -610,6 +610,14 @@ body {
 .admin-btn:hover {
   border-color: #ff6b35;
   color: #ff6b35;
+}
+
+.admin-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #333;
 }
 
 .logout-btn {
