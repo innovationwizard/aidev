@@ -60,15 +60,18 @@ const AddProjectForm: React.FC<AddProjectFormProps> = ({ onAddProject, onClose }
           </div>
           
           <div className="form-group">
-            <label htmlFor="logo">Logo URL</label>
+            <label htmlFor="logo">Logo File Path</label>
             <input
-              type="url"
+              type="text"
               id="logo"
               name="logo"
               value={formData.logo}
               onChange={handleChange}
-              placeholder="Enter logo URL (optional)"
+              placeholder="e.g., /project_logo.png"
             />
+            <div className="form-hint">
+              Enter the path to your logo file in the public directory (e.g., /project_logo.png)
+            </div>
           </div>
           
           <div className="form-group">

@@ -27,10 +27,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onEdit, onDelete, sh
       <div className="project-content">
         <div className="project-header">
           <div className="project-logo">
-            {project.logo.startsWith('/') ? (
+            {project.logo.startsWith('/') || project.logo.startsWith('data:') ? (
               <img src={project.logo} alt={`${project.name} Logo`} />
             ) : (
-              project.logo
+              <span>📁</span>
             )}
           </div>
           {showActions && (

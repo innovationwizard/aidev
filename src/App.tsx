@@ -32,6 +32,26 @@ function App() {
   const [editingProject, setEditingProject] = useState<typeof projects[0] | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
 
+  // Load projects from localStorage on component mount
+  useEffect(() => {
+    const savedProjects = localStorage.getItem('portfolioProjects');
+    if (savedProjects) {
+      try {
+        const parsedProjects = JSON.parse(savedProjects);
+        setProjects(parsedProjects);
+      } catch (error) {
+        console.error('Error loading projects from localStorage:', error);
+        // Fallback to initial projects if there's an error
+        setProjects(initialProjects);
+      }
+    }
+  }, []);
+
+  // Save projects to localStorage whenever projects change
+  useEffect(() => {
+    localStorage.setItem('portfolioProjects', JSON.stringify(projects));
+  }, [projects]);
+
   // Check for existing admin session on component mount
   useEffect(() => {
     const checkAdminSession = () => {

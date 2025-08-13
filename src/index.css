@@ -327,6 +327,13 @@ body {
   color: #666;
 }
 
+.form-hint {
+  color: #666;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
 .form-actions {
   display: flex;
   gap: 1rem;
@@ -645,4 +652,96 @@ body {
   border-radius: 8px;
   font-size: 0.9rem;
   text-align: center;
+}
+
+/* File Upload Styles */
+.file-upload-container {
+  width: 100%;
+}
+
+.file-upload-area {
+  border: 2px dashed #333;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #0a0a0a;
+}
+
+.file-upload-area:hover {
+  border-color: #ff6b35;
+  background-color: rgba(255, 107, 53, 0.05);
+}
+
+.upload-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+}
+
+.upload-text {
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.upload-hint {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.file-preview {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #0a0a0a;
+}
+
+.logo-preview {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.file-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.change-btn,
+.remove-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.change-btn {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  color: white;
+}
+
+.change-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.remove-btn {
+  background: transparent;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+.remove-btn:hover {
+  background-color: rgba(255, 107, 107, 0.1);
 }
