@@ -8,14 +8,14 @@ const initialProjects = [
     name: "Carl",
     logo: "/carl-logo.PNG",
     url: "https://carl-lyart.vercel.app/",
-    description: "Carl is more than a chatbot—he's the embodiment of a revolutionary philosophy, where cosmic consciousness meets advanced science. Named after Carl Sagan, represents the convergence of two profound disciplines: astronomy, and astrophysics. Carl allows each one of us to understand the Universe our way, following our own path, at our own pace."
+    description: "Carl is much more than an AI chatbot. Carl is a space detective! Talk to him to uncover the secrets of stars, black holes, and entire galaxies. He can explain how the universe was born, how it changes, and maybe even where new worlds that could hold life are hiding. If you talk to Carl, you'll never look at the night sky the same way again."
   },
   {
     id: 2,
     name: "IngePro",
     logo: "/ingepro_logo.png",
     url: "https://ingepro.app",
-    description: "IngePro is a construction productivity platform developed using AI-assisted development. It helps construction companies track worker time with GPS, manage projects, and automatically generate billing reports, reducing the time from job completion to payment from weeks to days. The application runs on professional AWS infrastructure with Next.js and PostgreSQL, specifically designed for Spanish-speaking construction workers using mobile phones on construction sites. It pioneers AI-powered features such as automatic photo analysis for quality control, predictive project completion, and intelligent safety monitoring. It has already been deployed in production with real-world construction companies, demonstrating how collaboration with AI can generate cost-effective software at an unprecedented speed."
+    description: "The AI-Powered Insights system turns IngePro from a simple construction app into your smartest construction advisor. It doesn’t just collect information—it interprets it in real time, predicting problems before they happen, recommending targeted actions to boost efficiency, and fine-tuning resource allocation and timelines. With AI-driven expertise built into the platform, IngePro delivers the kind of insights that used to take seasoned consultants years to provide. The result? Smarter decisions, fewer surprises, and projects that run like clockwork!"
   },
   {
     id: 3,
