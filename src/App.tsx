@@ -36,11 +36,56 @@ function App() {
         <div className="container">
           <div className="header-content">
             <div className="logo-wrapper">
-              <img src="/ai_dev_logo.png" alt="AI Dev Logo" className="logo" />
+              <video 
+                src="/ai_dev_logo.mp4" 
+                alt="AI Dev Logo" 
+                className="logo" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+              />
             </div>
             <h1 className="title text-fiery">
-              <div>Artificial&nbsp; Intelligence</div>
-              <div>DEVELOPMENTS</div>
+              <div>
+                <span className="ember-letter" style={{"--delay": 0}}>A</span>
+                <span className="ember-letter" style={{"--delay": 1}}>r</span>
+                <span className="ember-letter" style={{"--delay": 2}}>t</span>
+                <span className="ember-letter" style={{"--delay": 3}}>i</span>
+                <span className="ember-letter" style={{"--delay": 4}}>f</span>
+                <span className="ember-letter" style={{"--delay": 5}}>i</span>
+                <span className="ember-letter" style={{"--delay": 6}}>c</span>
+                <span className="ember-letter" style={{"--delay": 7}}>i</span>
+                <span className="ember-letter" style={{"--delay": 8}}>a</span>
+                <span className="ember-letter" style={{"--delay": 9}}>l</span>
+                <span>&nbsp;</span>
+                <span className="ember-letter" style={{"--delay": 10}}>I</span>
+                <span className="ember-letter" style={{"--delay": 11}}>n</span>
+                <span className="ember-letter" style={{"--delay": 12}}>t</span>
+                <span className="ember-letter" style={{"--delay": 13}}>e</span>
+                <span className="ember-letter" style={{"--delay": 14}}>l</span>
+                <span className="ember-letter" style={{"--delay": 15}}>l</span>
+                <span className="ember-letter" style={{"--delay": 16}}>i</span>
+                <span className="ember-letter" style={{"--delay": 17}}>g</span>
+                <span className="ember-letter" style={{"--delay": 18}}>e</span>
+                <span className="ember-letter" style={{"--delay": 19}}>n</span>
+                <span className="ember-letter" style={{"--delay": 20}}>c</span>
+                <span className="ember-letter" style={{"--delay": 21}}>e</span>
+              </div>
+              <div>
+                <span className="ember-letter" style={{"--delay": 22}}>D</span>
+                <span className="ember-letter" style={{"--delay": 23}}>E</span>
+                <span className="ember-letter" style={{"--delay": 24}}>V</span>
+                <span className="ember-letter" style={{"--delay": 25}}>E</span>
+                <span className="ember-letter" style={{"--delay": 26}}>L</span>
+                <span className="ember-letter" style={{"--delay": 27}}>O</span>
+                <span className="ember-letter" style={{"--delay": 28}}>P</span>
+                <span className="ember-letter" style={{"--delay": 29}}>M</span>
+                <span className="ember-letter" style={{"--delay": 30}}>E</span>
+                <span className="ember-letter" style={{"--delay": 31}}>N</span>
+                <span className="ember-letter" style={{"--delay": 32}}>T</span>
+                <span className="ember-letter" style={{"--delay": 33}}>S</span>
+              </div>
             </h1>
           </div>
         </div>

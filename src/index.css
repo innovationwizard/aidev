@@ -31,7 +31,7 @@ body {
 .header {
   padding: 2rem 0;
   text-align: center;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  background: #000000;
 }
 
 .header-content {
@@ -72,11 +72,51 @@ body {
   font-family: 'Inter', serif;
   font-weight: 500;
   font-size: 3.5rem;
-  background: linear-gradient(to bottom, #FFD166, #FF6A00, #C12700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0px 2px 6px rgba(58, 29, 0, 0.6);
+  color: #fdd835; /* A yellowish core for the ember */
   letter-spacing: -1px;
+  animation: glow 2.5s ease-in-out infinite;
+}
+
+/* The Glowing Text Animation */
+@keyframes glow {
+  0%, 100% {
+    /* The base glow effect */
+    text-shadow: 
+      0 0 5px #fdd835,  /* Inner yellowish glow */
+      0 0 10px #f57f17, /* Main ember orange glow */
+      0 0 20px #e65100, /* Outer darker orange glow */
+      0 0 40px #d84315; /* Faintest deep red glow */
+  }
+  50% {
+    /* The "pulsed" or brighter state of the glow */
+    text-shadow: 
+      0 0 10px #fdd835,
+      0 0 20px #f57f17,
+      0 0 30px #e65100,
+      0 0 50px #d84315;
+  }
+}
+
+/* Individual letter flicker animation for more organic feel */
+@keyframes letterFlicker {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.95;
+  }
+}
+
+.ember-letter {
+  display: inline-block;
+  animation: letterFlicker 3s ease-in-out infinite;
+  animation-delay: calc(var(--delay) * 0.1s);
 }
 
 /* Main Content */
@@ -125,7 +165,7 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 12px;
-  background-color: #B0E0E6;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
