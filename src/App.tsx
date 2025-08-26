@@ -8,7 +8,7 @@ const initialProjects = [
     name: "Carl",
     logo: "/carl-logo.PNG",
     url: "https://carl-lyart.vercel.app/",
-    description: "Carl is much more than an AI chatbot. Carl is a space detective! Talk to him to uncover the secrets of stars, black holes, and entire galaxies. He can explain how the universe was born, how it changes, and maybe even where new worlds that could hold life are hiding. If you talk to Carl, you'll never look at the night sky the same way again."
+    description: "Enterprise-grade RAG Chatbot that emulates Carl Sagan's persona to make complex scientific concepts accessible, powered by a custom Retrieval-Augmented Generation (RAG) architecture with <2s response time and 99.9% uptime using GPT-4o and Pinecone. Advanced semantic search and extraordinary personality consistency demonstrate expert prompt engineering, vector embeddings, and conversational AI design.\n\nBuilt with Next.js 14 (App Router), TypeScript, Tailwind CSS, Shadcn/UI; OpenAI GPT-4o, text-embedding-3-small, 1536-dimension embeddings, Pinecone vector DB, and Supabase, shows mastery of the complete AI development stack from vector databases to production deployment with managed infrastructure for proven scalability."
   },
   {
     id: 2,

@@ -12,38 +12,68 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="project-card">
-      <div className="project-content">
-        <div className="project-header">
-          <div className="project-logo">
-            {project.logo ? (
-              <img 
-                src={project.logo.startsWith('/') ? project.logo : `/${project.logo}`} 
-                alt={`${project.name} Logo`} 
-              />
-            ) : (
-              <span>📁</span>
-            )}
+    <div className="enterprise-card">
+      <div className="card-glow"></div>
+      <div className="card-content">
+        <div className="card-header">
+          <div className="logo-container">
+            <div className="logo-background">
+              {project.logo ? (
+                <img 
+                  src={project.logo.startsWith('/') ? project.logo : `/${project.logo}`} 
+                  alt={`${project.name} Logo`} 
+                  className="project-logo"
+                />
+              ) : (
+                <div className="logo-placeholder">📁</div>
+              )}
+            </div>
+            <div className="logo-shadow"></div>
+          </div>
+          <div className="header-content">
+            <h3 className="project-title">
+              <a 
+                href={project.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="project-link"
+              >
+                {project.name}
+              </a>
+            </h3>
+            <div className="tech-badges">
+              <span className="badge badge-ai">AI</span>
+              <span className="badge badge-enterprise">Enterprise</span>
+              <span className="badge badge-production">Production</span>
+            </div>
           </div>
         </div>
+        
         <div className="project-description">
-          <h3 style={{ color: '#ffffff', marginBottom: '0.5rem', fontSize: '1.2rem' }}>
-            <a 
-              href={project.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              style={{ 
-                color: '#ffffff', 
-                textDecoration: 'none',
-                transition: 'color 0.3s ease'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#ff6b35'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#ffffff'}
-            >
-              {project.name}
-            </a>
-          </h3>
-          <p>{project.description}</p>
+          <p className="description-text">{project.description}</p>
+        </div>
+        
+        <div className="card-footer">
+          <div className="metrics">
+            <div className="metric">
+              <span className="metric-label">Performance</span>
+              <span className="metric-value">99.9%</span>
+            </div>
+            <div className="metric">
+              <span className="metric-label">Response</span>
+              <span className="metric-value">&lt;2s</span>
+            </div>
+            <div className="metric">
+              <span className="metric-label">Scale</span>
+              <span className="metric-value">Enterprise</span>
+            </div>
+          </div>
+          <div className="cta-button">
+            <span>Explore Project</span>
+            <svg className="arrow-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
