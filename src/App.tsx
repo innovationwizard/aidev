@@ -8,7 +8,7 @@ const initialProjects = [
     name: "Carl",
     logo: "/carl-logo.PNG",
     url: "https://talktocarl.online",
-    description: "Enterprise-grade RAG Chatbot that emulates Carl Sagan's persona to make complex scientific concepts accessible, powered by a custom Retrieval-Augmented Generation (RAG) architecture with <2s response time and 99.9% uptime using GPT-4o and Pinecone. Advanced semantic search and extraordinary personality consistency demonstrate expert prompt engineering, vector embeddings, and conversational AI design.\n\nBuilt with Next.js 14 (App Router), TypeScript, Tailwind CSS, Shadcn/UI; OpenAI GPT-4o, text-embedding-3-small, 1536-dimension embeddings, Pinecone vector DB, and Supabase, shows mastery of the complete AI development stack from vector databases to production deployment with managed infrastructure for proven scalability."
+    description: "Enterprise-grade RAG Chatbot that emulates Carl Sagan's persona to make complex scientific concepts accessible, powered by a custom Retrieval-Augmented Generation (RAG) architecture with <2s response time and 99.9% uptime using GPT-4o and Pinecone. Advanced semantic search and extraordinary personality consistency demonstrate expert prompt engineering, vector embeddings, and conversational AI design.\n\nBuilt with Next.js 14 (App Router), TypeScript, Tailwind CSS, Shadcn/UI; OpenAI GPT-4o, text-embedding-3-small, 1536-dimension embeddings, Pinecone vector DB, and Supabase, shows mastery of the complete AI development stack from conceptualization to production deployment with managed infrastructure for proven scalability."
   },
   {
     id: 2,
