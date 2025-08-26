@@ -68,12 +68,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               <span className="metric-value">Enterprise</span>
             </div>
           </div>
-          <div className="cta-button">
+          {/* <div className="cta-button">
             <span>Explore Project</span>
             <svg className="arrow-icon" viewBox="0 0 24 24" fill="none">
               <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
