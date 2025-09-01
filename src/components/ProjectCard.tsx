@@ -14,11 +14,11 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const getStatusPosition = (status: string) => {
     switch (status) {
-      case 'IDEA': return '0%';
-      case 'DEV': return '33.33%';
-      case 'POC': return '66.66%';
-      case 'PROD': return '100%';
-      default: return '0%';
+      case 'IDEA': return '8px';
+      case 'DEV': return 'calc(33.33% - 30px)';
+      case 'POC': return 'calc(66.66% - 30px)';
+      case 'PROD': return 'calc(100% - 68px)';
+      default: return '8px';
     }
   };
 
@@ -79,7 +79,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                   style={{ left: getStatusPosition(project.status) }}
                   aria-label={getFullStatusText(project.status)}
                 >
-                  {getStatusLabel(project.status)}
+                  <span>{getStatusLabel(project.status)}</span>
                 </div>
                 <div className="slider-track">
                   <div className="track-segment track-segment-1"></div>
