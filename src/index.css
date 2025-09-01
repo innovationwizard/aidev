@@ -329,12 +329,14 @@ body {
 /* Status Slider - Metallic Design */
 .status-slider-container {
   margin-top: 0.75rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .slider-hull {
   position: relative;
-  width: 100%;
-  max-width: 280px;
+  width: 280px !important;
   height: 32px;
   background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #9ca3af 100%);
   border: 2px solid #6b7280;
@@ -347,6 +349,10 @@ body {
   margin: 0 auto;
   /* Debug: make sure it's visible */
   min-height: 32px;
+  /* Force horizontal layout */
+  display: block;
+  min-width: 280px;
+  flex-shrink: 0;
 }
 
 .slider-hull::before {
@@ -396,8 +402,7 @@ body {
   transition: all 0.3s ease;
   z-index: 3;
   min-width: 60px;
-  /* Debug: make sure button is visible */
-  border: 2px solid #ff0000;
+
 }
 
 .slider-button::before {
