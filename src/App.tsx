@@ -8,13 +8,15 @@ const initialProjects = [
     name: "Carl",
     logo: "/carl-logo.PNG",
     url: "https://talktocarl.online",
-    description: "Enterprise-grade RAG Chatbot that emulates Carl Sagan's persona to make complex scientific concepts accessible, powered by a custom Retrieval-Augmented Generation (RAG) architecture with <2s response time and 99.9% uptime using GPT-4o and Pinecone. Advanced semantic search and extraordinary personality consistency demonstrate expert prompt engineering, vector embeddings, and conversational AI design.\n\nBuilt with Next.js 14 (App Router), TypeScript, Tailwind CSS, Shadcn/UI; OpenAI GPT-4o, text-embedding-3-small, 1536-dimension embeddings, Pinecone vector DB, and Supabase, shows mastery of the complete AI development stack from conceptualization to production deployment with managed infrastructure for proven scalability."
+    status: "PROD",
+    description: "Enterprise-grade RAG Chatbot that emulates Carl Sagan's persona to make complex scientific concepts accessible, powered by a custom Retrieval-Augmented Generation (RAG) architecture with <2s response time and 99.9% uptime using GPT-4o and Pinecone. Advanced semantic search and extraordinary personality consistency demonstrate expertise in prompt engineering, vector embeddings, and conversational AI design.\n\nBuilt with Next.js 14 (App Router), TypeScript, Tailwind CSS, Shadcn/UI; OpenAI GPT-4o, text-embedding-3-small, 1536-dimension embeddings, Pinecone vector DB, and Supabase, shows mastery of the complete AI development stack from conceptualization to production deployment with managed infrastructure for proven scalability."
   },
   {
     id: 2,
     name: "IngePro",
     logo: "/ingepro_logo.png",
     url: "https://ingepro.app",
+    status: "POC",
     description: "The AI-Powered Insights system turns IngePro from a simple construction app into your smartest construction advisor. It doesn’t just collect information—it interprets it in real time, predicting problems before they happen, recommending targeted actions to boost efficiency, and fine-tuning resource allocation and timelines. With AI-driven expertise built into the platform, IngePro delivers the kind of insights that used to take seasoned consultants years to provide. The result? Smarter decisions, fewer surprises, and projects that run like clockwork!"
   },
   {
@@ -22,6 +24,15 @@ const initialProjects = [
     name: "Solveur",
     logo: "/solveur_logo.png",
     url: "https://solveur.pro",
+    status: "DEV",
+    description: "Solveur is an AI-powered business problem-solving agent that companies can deploy within 24 hours to automatically handle up to 75% of their customer interactions. It uses advanced Augmented Recovery-Generation (RAG) technology with a Pinecone vector database and Next.js architecture to create intelligent agents that learn from enterprise knowledge bases and respond like expert employees. Customers can save thousands of dollars per month in support costs while improving response times from hours to seconds. State-of-the-art features include multi-agent orchestration, predictive customer support that prevents issues before they occur, and autonomous workflow automation that goes beyond answering questions to truly resolve end-to-end business processes."
+  },
+  {
+    id: 4,
+    name: "Solveur (Idea)",
+    logo: "/solveur_logo.png",
+    url: "https://solveur.pro",
+    status: "IDEA",
     description: "Solveur is an AI-powered business problem-solving agent that companies can deploy within 24 hours to automatically handle up to 75% of their customer interactions. It uses advanced Augmented Recovery-Generation (RAG) technology with a Pinecone vector database and Next.js architecture to create intelligent agents that learn from enterprise knowledge bases and respond like expert employees. Customers can save thousands of dollars per month in support costs while improving response times from hours to seconds. State-of-the-art features include multi-agent orchestration, predictive customer support that prevents issues before they occur, and autonomous workflow automation that goes beyond answering questions to truly resolve end-to-end business processes."
   }
 ];

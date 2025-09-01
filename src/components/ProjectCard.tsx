@@ -4,6 +4,7 @@ interface Project {
   logo: string;
   url: string;
   description: string;
+  status: 'IDEA' | 'DEV' | 'POC' | 'PROD';
 }
 
 interface ProjectCardProps {
@@ -11,6 +12,36 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const getStatusPosition = (status: string) => {
+    switch (status) {
+      case 'IDEA': return '0%';
+      case 'DEV': return '33.33%';
+      case 'POC': return '66.66%';
+      case 'PROD': return '100%';
+      default: return '0%';
+    }
+  };
+
+  const getStatusLabel = (status: string) => {
+    switch (status) {
+      case 'IDEA': return 'IDEA';
+      case 'DEV': return 'DEV';
+      case 'POC': return 'POC';
+      case 'PROD': return 'PROD';
+      default: return 'IDEA';
+    }
+  };
+
+  const getFullStatusText = (status: string) => {
+    switch (status) {
+      case 'IDEA': return 'IDEA';
+      case 'DEV': return 'DEVELOPMENT';
+      case 'POC': return 'PROOF OF CONCEPT';
+      case 'PROD': return 'PRODUCTION';
+      default: return 'IDEA';
+    }
+  };
+
   return (
     <div className="enterprise-card">
       <div className="card-glow"></div>
@@ -41,10 +72,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 {project.name}
               </a>
             </h3>
-            <div className="tech-badges">
-              <span className="badge badge-ai">AI</span>
-              <span className="badge badge-enterprise">Enterprise</span>
-              <span className="badge badge-production">Production</span>
+            <div className="status-slider-container" role="group" aria-label={`This project is in: ${getFullStatusText(project.status)}`}>
+              <div className="slider-hull">
+                <div 
+                  className="slider-button"
+                  style={{ left: getStatusPosition(project.status) }}
+                  aria-label={getFullStatusText(project.status)}
+                >
+                  {getStatusLabel(project.status)}
+                </div>
+                <div className="slider-track">
+                  <div className="track-segment track-segment-1"></div>
+                  <div className="track-segment track-segment-2"></div>
+                  <div className="track-segment track-segment-3"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
