@@ -14,11 +14,11 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const getStatusPosition = (status: string) => {
     switch (status) {
-      case 'IDEA': return '8px';
-      case 'DEV': return 'calc(33.33% - 30px)';
-      case 'POC': return 'calc(66.66% - 30px)';
-      case 'PROD': return 'calc(100% - 68px)';
-      default: return '8px';
+      case 'IDEA': return '30px';
+      case 'DEV': return 'calc(33.33% + 10px)';
+      case 'POC': return 'calc(66.66% + 10px)';
+      case 'PROD': return 'calc(100% - 30px)';
+      default: return '30px';
     }
   };
 
