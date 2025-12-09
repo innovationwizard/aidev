@@ -1,18 +1,10 @@
 import { useState } from 'react';
 import ProjectCard from './components/ProjectCard';
 
-// Project data - all projects stored here for production
+// Project data for cards
 const initialProjects = [
   {
     id: 1,
-    name: "Carl",
-    logo: "/carl-logo.PNG",
-    url: "https://talktocarl.online",
-    status: "PROD",
-    description: "Enterprise-grade RAG Chatbot that emulates Carl Sagan's persona to make complex scientific concepts accessible, powered by a custom Retrieval-Augmented Generation (RAG) architecture with <2s response time and 99.9% uptime using GPT-4o and Pinecone. Advanced semantic search and extraordinary personality consistency demonstrate expertise in prompt engineering, vector embeddings, and conversational AI design.\n\nBuilt with Next.js 14 (App Router), TypeScript, Tailwind CSS, Shadcn/UI; OpenAI GPT-4o, text-embedding-3-small, 1536-dimension embeddings, Pinecone vector DB, and Supabase, shows mastery of the complete AI development stack from conceptualization to production deployment with managed infrastructure for proven scalability."
-  },
-  {
-    id: 2,
     name: "IngePro",
     logo: "/ingepro_logo.png",
     url: "https://ingepro.app",
@@ -34,6 +26,110 @@ const initialProjects = [
     url: "https://solveur.pro",
     status: "IDEA",
     description: "Solveur is an AI-powered business problem-solving agent that companies can deploy within 24 hours to automatically handle up to 75% of their customer interactions. It uses advanced Augmented Recovery-Generation (RAG) technology with a Pinecone vector database and Next.js architecture to create intelligent agents that learn from enterprise knowledge bases and respond like expert employees. Customers can save thousands of dollars per month in support costs while improving response times from hours to seconds. State-of-the-art features include multi-agent orchestration, predictive customer support that prevents issues before they occur, and autonomous workflow automation that goes beyond answering questions to truly resolve end-to-end business processes."
+  },
+  {
+    id: 5,
+    name: "AI Refill",
+    logo: "",
+    url: "#",
+    status: "PROD",
+    description: "AI Refill is an enterprise-grade inventory optimization platform that uses automated forecasting, statistical optimization, and role-based intelligence to eliminate stockouts, reduce overstock, and streamline purchasing operations. Built on a modern AWS architecture with a unified Node.js API, Dagster-orchestrated ML pipelines, and Next.js dashboards, it replaces fragmented legacy systems with a single, scalable solution that predicts demand, computes optimal reorder parameters, and delivers actionable insights to purchasing, sales, warehouse, finance, and management teams. The system integrates Prophet forecasting, SageMaker model management, automated ROP/safety-stock calculation, Redis caching, and Aurora Serverless PostgreSQL to ensure fast, reliable, and explainable decision-making—resulting in higher service levels, reduced working capital, and significantly improved operational efficiency."
+  },
+  {
+    id: 6,
+    name: "AIROI",
+    logo: "",
+    url: "#",
+    status: "POC",
+    description: "AIROI is a precision-built ROI calculator that quantifies the financial impact of AI initiatives—translating automation gains, labor savings, error reduction, and revenue uplift into clear payback periods and executive-ready metrics. It provides a structured model for evaluating AI investments by combining cost baselines, operational efficiencies, and projected value creation into a transparent business case that decision-makers can trust. Designed for consultants and enterprises adopting AI, AIROI delivers fast, defensible ROI estimates that strengthen proposals, accelerate approvals, and align technical initiatives with measurable financial outcomes."
+  },
+  {
+    id: 7,
+    name: "CANDIDATOS",
+    logo: "",
+    url: "#",
+    status: "POC",
+    description: "CANDIDATOS is an AI-driven election forecasting system built to model national voting behavior in Guatemala with high accuracy and transparency. It integrates demographic data, historical results, polling trends, and municipality-level dynamics into machine-learning models that generate probabilistic predictions for candidates, turnout, and vote distributions. Designed as a decision-support tool for political strategists, it highlights undervalued regions, detects swing municipalities, and quantifies the strategic impact of targeted interventions. CANDIDATOS demonstrates how advanced analytics and AI can produce reliable, data-driven insights in complex, low-signal electoral environments."
+  },
+  {
+    id: 8,
+    name: "COFFEE",
+    logo: "",
+    url: "#",
+    status: "POC",
+    description: "COFFEE is an AI-powered recommendation engine that matches users to the exact Guatemalan coffee varietal, region, and batch that best fits their taste profile. By asking a short set of preference questions—acidity, body, flavor notes, roast level—it uses a curated dataset of real farms, micro-lots, and regional characteristics to generate precise, personalized recommendations. Designed to showcase Guatemala's coffee diversity, the system helps consumers discover high-quality batches while enabling producers and roasters to connect their products with the right audiences through data-driven personalization."
+  },
+  {
+    id: 9,
+    name: "DICTA",
+    logo: "",
+    url: "#",
+    status: "POC",
+    description: "DICTA is a Spanish speech-to-text system that delivers accurate transcriptions, concise summaries, and extracted key ideas in bullet form. Built for fast information capture, it processes meetings, interviews, lectures, and voice notes with high fidelity, then distills the content into actionable insights. DICTA streamlines knowledge transfer for teams and professionals by turning unstructured audio into clean text, executive summaries, and organized takeaways within seconds."
+  },
+  {
+    id: 10,
+    name: "GIGR",
+    logo: "",
+    url: "#",
+    status: "DEV",
+    description: "GIGR is an AI-driven gig generation agent that continuously scans the web for high-value B2B opportunities and transforms them into actionable leads. It identifies companies with unmet needs, surfaces relevant projects, and matches them to a professional's capabilities using intelligent filters and semantic analysis. Designed to automate the top of the sales funnel, Gigr helps consultants and agencies uncover hidden demand, streamline outreach, and maintain a consistent pipeline of revenue-ready opportunities."
+  },
+  {
+    id: 11,
+    name: "LATINA",
+    logo: "",
+    url: "#",
+    status: "PROD",
+    description: "LATINA is an AI-powered image enhancement system built for Latina Interiors to automate the final-art finishing process. It uses concurrent machine-learning models trained on the Director of Design's aesthetic preferences—colors, textures, lighting, and composition—allowing the system to reproduce the studio's signature look automatically. By applying consistent, high-quality finishing touches at scale, LATINA reduces manual post-production labor by more than 99%, accelerates client delivery, and preserves artistic consistency across the brand's entire visual catalog."
+  },
+  {
+    id: 12,
+    name: "Legislazuli",
+    logo: "",
+    url: "#",
+    status: "PROD",
+    description: "LEGISLAZULI is a mission-critical legal data extraction system engineered for 100% accuracy by design. It processes complex legal documents using three fully independent AI models—each performing its own extraction and validation—then produces a consensus output that guarantees reliability even in high-risk workflows. Built for environments where errors are unacceptable, LEGISLAZULI delivers structured, audit-ready data from statutes, contracts, and regulatory texts, enabling legal teams to automate repetitive review tasks while maintaining absolute precision."
+  },
+  {
+    id: 13,
+    name: "OCD",
+    logo: "",
+    url: "#",
+    status: "DEV",
+    description: "OCD is an autonomous, AI-gated productivity system built to unify strategy, tasks, code, and documentation into a single operating framework that actively enforces focus and accelerates delivery. It replaces passive tools with coordinated agents—Filer, Librarian, Prioritizer, Storer, and Retriever—that classify work, detect conflicts, enforce WIP limits, integrate completed items into a continuously evolving corpus, and generate live documents on demand. Designed around reinforcement-learning architectures and strategic intent, OCD transforms fragmented notes, ideas, and projects into a coherent, ever-growing Single Source of Truth that eliminates rework, shortens idea-to-delivery time, and preserves long-term leverage across all future projects."
+  },
+  {
+    id: 14,
+    name: "prepAIr",
+    logo: "",
+    url: "#",
+    status: "POC",
+    description: "prepAIr is an R-based data-preparation toolkit that automates the most time-consuming steps of cleaning and standardizing analytical datasets. It provides modular functions for handling missing values, detecting and correcting outliers, scaling variables, and exporting reproducible preprocessing pipelines. Designed for reliability and repeatability, prepAIr streamlines the entire data-wrangling workflow so analysts and AI models receive clean, structured, analysis-ready data with minimal manual effort."
+  },
+  {
+    id: 15,
+    name: "TRAGALDABAS",
+    logo: "",
+    url: "#",
+    status: "DEV",
+    description: "TRAGALDABAS is an AI-powered universal data ingestor that transforms raw, unstructured client files into actionable business intelligence. Feed it any document—financial statements, operational reports, sales data—and the system autonomously detects the file structure, classifies the content domain, infers semantic meaning, cleans and validates the data, and persists it into a properly designed PostgreSQL schema. Beyond ETL, Tragaldabas generates executive-level insights and board-ready presentation slides, distilling complex datasets into what matters most: relevant findings, material risks, and strategic opportunities—no filler, no mock data, just the signal a CEO needs to make decisions."
+  },
+  {
+    id: 16,
+    name: "WifeApp",
+    logo: "",
+    url: "#",
+    status: "PROD",
+    description: "WifeApp is a streamlined communication and collaboration tool designed to help couples coordinate tasks and shared responsibilities with zero friction. The wife-side interface captures anything the husband needs to remember—tasks, reminders, notes—while the husband-side provides a simple, focused Kanban board for organizing and completing those tasks. Notes are stored in a searchable, filterable system, and task progress is instantly visible to both sides, ensuring clarity, reducing forgetfulness, and eliminating repeated conversations. By turning daily coordination into a clean, structured workflow, WifeApp strengthens communication and makes household collaboration effortless."
+  },
+  {
+    id: 2,
+    name: "Carl",
+    logo: "/carl-logo.PNG",
+    url: "https://talktocarl.online",
+    status: "PROD",
+    description: "Enterprise-grade RAG Chatbot that emulates Carl Sagan's persona to make complex scientific concepts accessible, powered by a custom Retrieval-Augmented Generation (RAG) architecture with <2s response time and 99.9% uptime using GPT-4o and Pinecone. Advanced semantic search and extraordinary personality consistency demonstrate expertise in prompt engineering, vector embeddings, and conversational AI design.\n\nBuilt with Next.js 14 (App Router), TypeScript, Tailwind CSS, Shadcn/UI; OpenAI GPT-4o, text-embedding-3-small, 1536-dimension embeddings, Pinecone vector DB, and Supabase, shows mastery of the complete AI development stack from conceptualization to production deployment with managed infrastructure for proven scalability."
   }
 ];
 
