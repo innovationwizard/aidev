@@ -1,3 +1,6 @@
+import React from 'react';
+import { PROJECT_ICONS } from '../App';
+
 interface Project {
   id: number;
   name: string;
@@ -49,7 +52,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className="card-header">
           <div className="logo-container">
             <div className="logo-background">
-              {project.logo ? (
+              {PROJECT_ICONS[project.name] ? (
+                <div className="project-icon">
+                  {PROJECT_ICONS[project.name]}
+                </div>
+              ) : project.logo ? (
                 <img 
                   src={project.logo.startsWith('/') ? project.logo : `/${project.logo}`} 
                   alt={`${project.name} Logo`} 

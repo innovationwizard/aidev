@@ -1,5 +1,28 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ProjectCard from './components/ProjectCard';
+import { 
+  HardHat, BrainCircuit, RefreshCcw, TrendingUp, Coffee, Mic, 
+  Briefcase, Armchair, Scale, ListChecks, FileCog, FileScan, 
+  Heart, Telescope 
+} from 'lucide-react';
+
+// Project icon mapping
+export const PROJECT_ICONS: Record<string, React.ReactNode> = {
+  "IngePro": <HardHat className="w-10 h-10 text-orange-500" />,
+  "Solveur": <BrainCircuit className="w-10 h-10 text-purple-500" />,
+  "AI Refill": <RefreshCcw className="w-10 h-10 text-blue-500" />,
+  "AIROI": <TrendingUp className="w-10 h-10 text-green-500" />,
+  "COFFEE": <Coffee className="w-10 h-10 text-amber-700" />,
+  "DICTA": <Mic className="w-10 h-10 text-slate-600" />,
+  "GIGR": <Briefcase className="w-10 h-10 text-indigo-500" />,
+  "LATINA": <Armchair className="w-10 h-10 text-rose-400" />,
+  "Legislazuli": <Scale className="w-10 h-10 text-blue-800" />,
+  "OCD": <ListChecks className="w-10 h-10 text-teal-500" />,
+  "prepAIr": <FileCog className="w-10 h-10 text-gray-500" />,
+  "TRAGALDABAS": <FileScan className="w-10 h-10 text-emerald-600" />,
+  "WifeApp": <Heart className="w-10 h-10 text-red-500" />,
+  "Carl": <Telescope className="w-10 h-10 text-cyan-400" />
+};
 
 // Project data for cards
 const initialProjects = [
