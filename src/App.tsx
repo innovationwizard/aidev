@@ -36,14 +36,6 @@ const initialProjects = [
     description: "AIROI is a precision-built ROI calculator that quantifies the financial impact of AI initiatives—translating automation gains, labor savings, error reduction, and revenue uplift into clear payback periods and executive-ready metrics. It provides a structured model for evaluating AI investments by combining cost baselines, operational efficiencies, and projected value creation into a transparent business case that decision-makers can trust. Designed for consultants and enterprises adopting AI, AIROI delivers fast, defensible ROI estimates that strengthen proposals, accelerate approvals, and align technical initiatives with measurable financial outcomes."
   },
   {
-    id: 7,
-    name: "CANDIDATOS",
-    logo: "",
-    url: "#",
-    status: "POC",
-    description: "CANDIDATOS is an AI-driven election forecasting system built to model national voting behavior in Guatemala with high accuracy and transparency. It integrates demographic data, historical results, polling trends, and municipality-level dynamics into machine-learning models that generate probabilistic predictions for candidates, turnout, and vote distributions. Designed as a decision-support tool for political strategists, it highlights undervalued regions, detects swing municipalities, and quantifies the strategic impact of targeted interventions. CANDIDATOS demonstrates how advanced analytics and AI can produce reliable, data-driven insights in complex, low-signal electoral environments."
-  },
-  {
     id: 8,
     name: "COFFEE",
     logo: "",
